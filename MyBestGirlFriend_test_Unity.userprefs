@@ -1,0 +1,22 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resource\scenario\#scenario1_proto.txt">
+    <Files>
+      <File FileName="Assets\script\MessageManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\script\GUIManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\script\GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\script\ImageManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resource\scenario\test.txt" Line="1" Column="1" />
+      <File FileName="Assets\Resource\scenario\#end1_proto.txt" Line="1" Column="1" />
+      <File FileName="Assets\script\EffectManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resource\scenario\#scenario1_proto.txt" Line="13" Column="3" />
+      <File FileName="Assets\Resource\scenario\#scenario2_proto.txt" Line="1" Column="1" />
+      <File FileName="Assets\Resource\scenario\setup_proto.txt" Line="1" Column="1" />
+      <File FileName="Assets\script\SaveDataManager.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
