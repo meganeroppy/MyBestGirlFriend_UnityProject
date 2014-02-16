@@ -150,7 +150,8 @@ PlayerSettings:
   ps3TrialMode: 0
   flashStrippingLevel: 2
   spritePackerPolicy: 
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    7: 
   metroPackageName: MyBestGirlFriend_test_Unity
   metroPackageLogo: 
   metroPackageVersion: 

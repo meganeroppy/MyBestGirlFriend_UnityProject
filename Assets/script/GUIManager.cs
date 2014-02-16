@@ -10,14 +10,14 @@ public class GUIManager : MonoBehaviour {
 	private bool inputting;
 	
 	//MessageManager
-	private string cur_text;
+	private static string cur_text;
 	//public GameObject msgManager;
 
 	//about choices
-	private bool questioned;
-	private string[] choice = new string[4];
-	private int[] point = new int[4];
-	private string[] reaction = new string[4];
+	private bool questioned = false;
+	private static string[] choice = new string[4];
+	private static int[] point = new int[4];
+	private static string[] reaction = new string[4];
 
 	//logo
 //	private float logo_width;
@@ -35,14 +35,24 @@ public class GUIManager : MonoBehaviour {
 	public GUIStyle skin_MsgWindow;
 	public GUIStyle skin_Choices;
 	public GUIStyle skin_Title;
+	public GUIStyle skin_SystemInfo;
 
-	//
-	public GameObject webcamManager;
-	//
+	//Software Keyboard
+	private TouchScreenKeyboard keyboard;
+
+	// webcam
+	public GameObject webCamManager;
+	private GameObject webCamManagerPrefab;
+	private bool webCamIsWorking = false;
+
+	// gamemanager
+	public GameObject gameManager;
+	public GameObject messageManager;
+
+
+	private string debugMsg = "DEFAULT";
 	// Use this for initialization
 	void Start () {
-
-		//Instantiate(msgManager);
 
 		w = GameManager.w;
 		h = GameManager.h;
@@ -55,7 +65,6 @@ public class GUIManager : MonoBehaviour {
 //		logo_height = h * 0.3f;
 
 		//about choices
-		questioned = false;
 		for(int i = 0 ; i < 4 ; i++){
 			choice[i] = "CHOICE" + i.ToString();
 		}
@@ -72,8 +81,8 @@ public class GUIManager : MonoBehaviour {
 		btn_height = h * 0.15f;
 
 		//text
-		cur_text = "Test program will get started";	}
-	
+		cur_text = "The program will get started..";
+	}
 	// Update is called once per frame
 	void Update () {
 	}
@@ -104,16 +113,22 @@ public class GUIManager : MonoBehaviour {
 				GameManager.cur_scenario = GameManager.SCENARIO.SCENARIO2;
 			}
 			if( GUI.Button(new Rect(w * 0.3f, h * 0.55f, w * 0.4F, h * 0.05f), "End1", skin_Title) ){
-				GameManager.cur_scenario = GameManager.SCENARIO.END1
-					;
+				GameManager.cur_scenario = GameManager.SCENARIO.END1;
 			}
 
 			//GUI.Box(new Rect( (w * 0.5f) - (logo_width * 0.5f), h * 0.2f, logo_width, logo_height), "Imagine Love Simulation", skin); 
 			//		GUI.Box(new Rect( (w * 0.5f) - (logo_width * 0.5f), (h * 0.3f), logo_width, logo_height * 3.0f), testImg); 
 			if(GUI.Button(new Rect(w * 0.1f, h * 0.75f, btn_width, btn_height), "Imagine")){
-				Debug.Log("Imagine Mode is being developed.");
-				//
-				GameObject webcam = Instantiate(webcamManager) as GameObject;
+				//Debug.Log("Imagine Mode is being developed.");
+
+
+				if(!webCamIsWorking){
+					webCamManagerPrefab = Instantiate(webCamManager) as GameObject;
+					webCamIsWorking = true;
+				}else{
+					Destroy( webCamManagerPrefab );
+					webCamIsWorking = false;
+				}
 				//
 			}
 			if(GUI.Button(new Rect(w * 0.6f, h * 0.75f, btn_width, btn_height), "Fiction")){
@@ -133,28 +148,29 @@ public class GUIManager : MonoBehaviour {
 				GameObject.Find("ImageManager").SendMessage("switchImg", "ANGRY", SendMessageOptions.DontRequireReceiver);
 			}
 			*/////////////////test//////////////////
-			if(questioned){
+
+			if(questioned){	//Answering a question
 				if(GUI.Button(new Rect( 0, h * 0.8f, win_width * 0.5f, win_height * 0.5f), choice[0], skin_Choices)){
-					GameManager.addPoint(this.point[0]);
+					gameManager.GetComponent<GameManager>().addPoint(point[0]);
 					DispText(reaction[0]);
 					questioned = false;
 				}
 				if(GUI.Button(new Rect( w * 0.5f, h * 0.8f, win_width * 0.5f, win_height * 0.5f), choice[1], skin_Choices)){
-					GameManager.addPoint(this.point[1]);
+					gameManager.GetComponent<GameManager>().addPoint(point[1]);
 					DispText(reaction[1]);
 					questioned = false;
 				}
 				if(GUI.Button(new Rect( 0, h * 0.9f, win_width * 0.5f, win_height * 0.5f), choice[2], skin_Choices)){
-					GameManager.addPoint(this.point[2]);
+					gameManager.GetComponent<GameManager>().addPoint(point[2]);
 					DispText(reaction[2]);
 					questioned = false;
 				}
 				if(GUI.Button(new Rect( w * 0.5f, h * 0.9f, win_width * 0.5f, win_height * 0.5f), choice[3], skin_Choices)){
-					GameManager.addPoint(this.point[3]);
+					gameManager.GetComponent<GameManager>().addPoint(point[3]);
 					DispText(reaction[3]);
 					questioned = false;
 				}
-			}else{
+			}else{	//Not answering a question
 				if(GUI.Button(new Rect( (w * 0.5f) - (win_width * 0.5f), h * 0.8f, win_width, win_height), cur_text, skin_MsgWindow)){
 					if(readyToTitle){
 						Application.LoadLevel("Title");
@@ -167,12 +183,49 @@ public class GUIManager : MonoBehaviour {
 		case GameManager.SCENE.SETUP:
 			if(GUI.Button(new Rect( (w * 0.5f) - (win_width * 0.5f), h * 0.8f, win_width, win_height), cur_text, skin_MsgWindow)){
 				if(inputting){
-					TouchScreenKeyboard keyboard;
-					do{
-						keyboard = TouchScreenKeyboard.Open("PLAYER");
-					}while(keyboard.text == "");
-					GameManager.ApplyPlayerName(keyboard.text);
-					inputting = false;
+					string os = gameManager.GetComponent<GameManager>().GetCurOS();
+					if(os == "WINDOWS"){
+						/*/	misteryZone 01 why it doesn't display aything??
+						GUI.Box(new Rect(0.0f, 0.0f, win_width, win_height), "banana", skin_Choices);
+						gameManager.GetComponent<GameManager>().addPoint(1);
+						string tmpName = null;
+						if(GUI.Button(new Rect(0.0f, 0.0f, win_width, win_height), "banana", skin_Choices)){
+							tmpName = "banana";
+							gameManager.GetComponent<GameManager>().ApplyPlayerName(tmpName);
+							inputting = false;
+						}
+						if(GUI.Button(new Rect(w * 0.5f, 0.0f, win_width, win_height), "kimchi", skin_Choices)){
+							tmpName = "kimchi";
+							gameManager.GetComponent<GameManager>().ApplyPlayerName(tmpName);
+							inputting = false;
+						}
+						*/
+						gameManager.GetComponent<GameManager>().ApplyPlayerName("*PLAYER*");
+						inputting = false;
+
+					}else if(os == "ANDROID" || os == "IOS"){
+						GUI.Box(new Rect(0.0f, 30.0f, w, h ), "keyboard.text : " + keyboard.text, skin_SystemInfo);
+						/*
+						do{
+							keyboard = TouchScreenKeyboard.Open("Player", TouchScreenKeyboardType.Default);
+						}while(keyboard.text == "");
+						*/
+string text = "PLAYER";
+						keyboard = TouchScreenKeyboard.Open(text, TouchScreenKeyboardType.Default);
+						
+if(keyboard.done){
+debugMsg = text;
+}
+if(keyboard != null){
+text = keyboard.text;
+debugMsg = text;
+
+}
+
+						debugMsg = keyboard.text;
+						gameManager.GetComponent<GameManager>().ApplyPlayerName(keyboard.text);
+						inputting = false;
+					}
 				}else if(readyToMain){
 					Application.LoadLevel("Main");
 				}else{
@@ -184,10 +237,17 @@ public class GUIManager : MonoBehaviour {
 		default:
 			break;
 		}
+
+		//Sysytem Info
+		GUI.Box(new Rect(0.0f, 0.0f, w, h ), "Running on " + gameManager.GetComponent<GameManager>().GetCurOS(), skin_SystemInfo);
+
+		//Debag Message
+		GUI.Box(new Rect(0.0f, 15.0f, w, h ), "playerName : " + gameManager.GetComponent<GameManager>().GetPlayerName(), skin_SystemInfo);
 	}
 
 	void DispText(){
-		string tmp_text = MessageManager.AnalyzeLine();
+		string tmp_text = messageManager.GetComponent<MessageManager>().AnalyzeLine();
+
 		switch(tmp_text){
 			case "END":
 				readyToTitle = true;
@@ -201,6 +261,9 @@ public class GUIManager : MonoBehaviour {
 			case " ":
 				DispText();
 				break;
+			case "CHOICE":
+			questioned = true;
+				break;
 		default:
 			cur_text = tmp_text;
 			break;
@@ -208,7 +271,7 @@ public class GUIManager : MonoBehaviour {
 	}
 
 	void DispText(string text){
-		string tmp_text = MessageManager.AnalyzeLine(text);
+		string tmp_text = messageManager.GetComponent<MessageManager>().AnalyzeLine(text);
 		switch(tmp_text){
 		case "END":
 			readyToTitle = true;
@@ -233,12 +296,13 @@ public class GUIManager : MonoBehaviour {
 			point[i] = int.Parse(tmpArray[1]);
 			reaction[i] = tmpArray[2];
 		}
-		questioned = true;
+		questioned = true;	
+
 	} 
 
 	public void DispResult(string[] resultArray){
 
-		if(GameManager.GetPoint() >=3){
+		if(gameManager.GetComponent<GameManager>().GetPoint() >=3){
 			DispText(resultArray[0]);
 		}else{
 			DispText(resultArray[1]);

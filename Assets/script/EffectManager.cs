@@ -7,13 +7,13 @@ public class EffectManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
 	}
 
-	void Make(string request){
+	public void Make(string request){
 //		print(Random.value);
 		switch(request){
 		case "GOOD":

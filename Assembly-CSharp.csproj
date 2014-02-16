@@ -46,19 +46,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\script\EffectManager.cs" />
-     <Compile Include="Assets\script\Effect_good.cs" />
-     <Compile Include="Assets\script\GUIManager.cs" />
-     <Compile Include="Assets\script\GameManager.cs" />
-     <Compile Include="Assets\script\ImageManager.cs" />
-     <Compile Include="Assets\script\MessageManager.cs" />
-     <Compile Include="Assets\script\SaveDataManager.cs" />
-     <Compile Include="Assets\script\TestForWebcam.cs" />
-     <None Include="Assets\Resource\scenario\#scenario2_proto.txt" />
-     <None Include="Assets\Resource\scenario\#scenario1_proto.txt" />
-     <None Include="Assets\Resource\scenario\#end1_proto.txt" />
-     <None Include="Assets\Resource\scenario\test.txt" />
-     <None Include="Assets\Resource\scenario\setup_proto.txt" />
+     <Compile Include="Assets\SceneManager.cs" />
+     <Compile Include="Assets\Script\DataKeeper.cs" />
+     <Compile Include="Assets\Script\DontDestroy.cs" />
+     <Compile Include="Assets\Script\EffectManager.cs" />
+     <Compile Include="Assets\Script\Effect_good.cs" />
+     <Compile Include="Assets\Script\GUIManager.cs" />
+     <Compile Include="Assets\Script\GameManager.cs" />
+     <Compile Include="Assets\Script\ImageManager.cs" />
+     <Compile Include="Assets\Script\MessageManager.cs" />
+     <Compile Include="Assets\Script\Safe.cs" />
+     <Compile Include="Assets\Script\WebCamManager.cs" />
+     <None Include="Assets\Resource\Scenario\#scenario2_proto.txt" />
+     <None Include="Assets\Resource\Scenario\#scenario1_proto.txt" />
+     <None Include="Assets\Resource\Scenario\#end1_proto.txt" />
+     <None Include="Assets\Resource\Scenario\test.txt" />
+     <None Include="Assets\Resource\Scenario\setup_proto.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

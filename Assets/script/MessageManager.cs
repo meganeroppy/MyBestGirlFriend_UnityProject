@@ -10,6 +10,12 @@ public class MessageManager : MonoBehaviour {
 	private static string[] textLines;
 	private static string curLineMsg;
 	private static int curLine;
+
+	//manager
+	public GameObject gameManager;
+	public GameObject imageManger;
+	public GameObject gUIManager;
+
 	// Use this for initialization
 	void Start () {
 		switch(GameManager.cur_scene){
@@ -37,20 +43,16 @@ public class MessageManager : MonoBehaviour {
 		curLine = 0;
 		curLineMsg = textLines[curLine];
 	}
-
-//	void Start(string next){
-//		if(next == "")
-//	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
 
-	public static string AnalyzeLine(){
+	public string AnalyzeLine(){
 		curLineMsg = textLines[curLine++];
 		if( curLineMsg.Contains("<PLAYER>") ){		//replace playerName
-			Debug.Log ("replacePName");
-			curLineMsg = curLineMsg.Replace("<PLAYER>", GameManager.GetPlayerName());
+
+			curLineMsg = curLineMsg.Replace("<PLAYER>", gameManager.GetComponent<GameManager>().GetPlayerName());
 		}
 
 		if(curLineMsg.EndsWith("]")){			//facial change
@@ -58,7 +60,7 @@ public class MessageManager : MonoBehaviour {
 			int startPos = 0;
 			int endPos = tmpLine[1].IndexOf("]");
 			string optionCmd = tmpLine[1].Substring(startPos, endPos - startPos);
-			GameObject.Find("ImageManager").SendMessage("switchImg", optionCmd, SendMessageOptions.RequireReceiver);
+			imageManger.GetComponent<ImageManager>().switchImg(optionCmd);
 			return tmpLine[0];
 		}else if(curLineMsg.EndsWith("}")){		//event flag
 			int startPos = curLineMsg.IndexOf("{") + 1;
@@ -66,18 +68,18 @@ public class MessageManager : MonoBehaviour {
 			curLineMsg = curLineMsg.Substring(startPos, endPos - startPos);
 			switch(curLineMsg){
 				case "BG":
-					GameObject.Find("ImageManager").SendMessage("switchImg", "NONE", SendMessageOptions.RequireReceiver);
+					imageManger.GetComponent<ImageManager>().switchImg("NONE");
 					return " ";
 				case "CHOICE":
 					curLineMsg = textLines[curLine];		//get line containing choices, points, and reactions
 					string[] questionArray = curLineMsg.Split(',');
-					GameObject.Find("GUIManager").SendMessage("MakeChoices", questionArray, SendMessageOptions.RequireReceiver);
+					gUIManager.GetComponent<GUIManager>().MakeChoices(questionArray);
 					curLine++;
 					return "CHOICE";
 				case "JUNCTION":
 					curLineMsg = textLines[curLine];		//get line containing 2 results
 					string[] resultArray = curLineMsg.Split(',');
-					GameObject.Find("GUIManager").SendMessage("DispResult", resultArray, SendMessageOptions.RequireReceiver);
+					gUIManager.GetComponent<GUIManager>().DispResult(resultArray);
 					curLine++;
 					return " ";
 				case "INPUTNAME":
@@ -86,20 +88,19 @@ public class MessageManager : MonoBehaviour {
 					curLine = 0;
 				return "ENDSETUP";
 			default:
-				print ("curLineMsg = ".ToString() + curLineMsg);
-					break;
+				break;
 			}
 		}
 		return curLineMsg;
 	}
 
-	public static string AnalyzeLine(string text){
+	public string AnalyzeLine(string text){
 		if(text.EndsWith("]")){		//facial change
 			string[] tmpLine = text.Split('[');
 			int startPos = 0;
 			int endPos = tmpLine[1].IndexOf("]");
 			string optionCmd = tmpLine[1].Substring(startPos, endPos - startPos);
-			GameObject.Find("ImageManager").SendMessage("switchImg", optionCmd, SendMessageOptions.RequireReceiver);
+			imageManger.GetComponent<ImageManager>().switchImg(optionCmd);
 			return tmpLine[0];
 
 		}

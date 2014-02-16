@@ -38,7 +38,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1fb66064437db44b8ed0f1f3a1be9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  webcamManager: {fileID: 0}
+  webcamManager: {fileID: 100000, guid: 14fb2a30c28e2a845b7c8c0fbb1ad7ac, type: 2}
+  dataKeeper: {fileID: 100000, guid: bca4793ea396d934196fd33596c7cf17, type: 2}
+  effectManager: {fileID: 100000, guid: 79616cca910ec0e4884e74b186a05605, type: 2}
+  imageManager: {fileID: 100000, guid: c7ea23b98d3a2b442a4bbc33ea3a5db0, type: 2}
+  messageManager: {fileID: 100000, guid: 49960af42b1a2d349b6d45202bbbe652, type: 2}
+  GUIManager: {fileID: 100000, guid: 8ded05e3ffac23a488964a67d99d3232, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
