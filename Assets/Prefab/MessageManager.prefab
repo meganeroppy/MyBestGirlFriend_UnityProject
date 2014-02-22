@@ -45,6 +45,7 @@ MonoBehaviour:
   gameManager: {fileID: 100000, guid: c324b58f925ab8c478fffdd07a812386, type: 2}
   imageManger: {fileID: 100000, guid: c7ea23b98d3a2b442a4bbc33ea3a5db0, type: 2}
   gUIManager: {fileID: 100000, guid: 8ded05e3ffac23a488964a67d99d3232, type: 2}
+  GUITextTest: {fileID: 100000, guid: 76c7ba7f3b9bff743b00c6ece19d2d62, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

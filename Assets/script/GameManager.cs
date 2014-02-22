@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log(num);
+		Debug.Log(playerName);
 	}
 
 //	void startConversation(){
@@ -139,4 +139,5 @@ public class GameManager : MonoBehaviour {
 	public string GetCurOS(){
 		return cur_OS.ToString();
 	}
+	
 }

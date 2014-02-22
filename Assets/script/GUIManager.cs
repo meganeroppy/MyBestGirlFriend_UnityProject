@@ -48,7 +48,9 @@ public class GUIManager : MonoBehaviour {
 	// gamemanager
 	public GameObject gameManager;
 	public GameObject messageManager;
-
+	public GameObject textFieldPrefab;
+	private GameObject textField;
+	private bool TextFieldIsOn = false;
 
 	private string debugMsg = "DEFAULT";
 	// Use this for initialization
@@ -83,6 +85,7 @@ public class GUIManager : MonoBehaviour {
 		//text
 		cur_text = "The program will get started..";
 	}
+
 	// Update is called once per frame
 	void Update () {
 	}
@@ -185,46 +188,25 @@ public class GUIManager : MonoBehaviour {
 				if(inputting){
 					string os = gameManager.GetComponent<GameManager>().GetCurOS();
 					if(os == "WINDOWS"){
-						/*/	misteryZone 01 why it doesn't display aything??
-						GUI.Box(new Rect(0.0f, 0.0f, win_width, win_height), "banana", skin_Choices);
-						gameManager.GetComponent<GameManager>().addPoint(1);
-						string tmpName = null;
-						if(GUI.Button(new Rect(0.0f, 0.0f, win_width, win_height), "banana", skin_Choices)){
-							tmpName = "banana";
-							gameManager.GetComponent<GameManager>().ApplyPlayerName(tmpName);
+						if(!TextFieldIsOn){
+							textField = Instantiate(textFieldPrefab) as GameObject;
+							TextFieldIsOn = true;
+						}
+						if(textField.GetComponent<TextField>().CheckIsComplete() == true){
 							inputting = false;
 						}
-						if(GUI.Button(new Rect(w * 0.5f, 0.0f, win_width, win_height), "kimchi", skin_Choices)){
-							tmpName = "kimchi";
-							gameManager.GetComponent<GameManager>().ApplyPlayerName(tmpName);
-							inputting = false;
-						}
-						*/
-						gameManager.GetComponent<GameManager>().ApplyPlayerName("*PLAYER*");
-						inputting = false;
-
 					}else if(os == "ANDROID" || os == "IOS"){
-						GUI.Box(new Rect(0.0f, 30.0f, w, h ), "keyboard.text : " + keyboard.text, skin_SystemInfo);
-						/*
-						do{
-							keyboard = TouchScreenKeyboard.Open("Player", TouchScreenKeyboardType.Default);
-						}while(keyboard.text == "");
-						*/
-string text = "PLAYER";
-						keyboard = TouchScreenKeyboard.Open(text, TouchScreenKeyboardType.Default);
-						
-if(keyboard.done){
-debugMsg = text;
-}
-if(keyboard != null){
-text = keyboard.text;
-debugMsg = text;
+						//GUI.Box(new Rect(0.0f, 30.0f, w, h ), "keyboard.text : " + keyboard.text, skin_SystemInfo);
 
-}
-
-						debugMsg = keyboard.text;
-						gameManager.GetComponent<GameManager>().ApplyPlayerName(keyboard.text);
-						inputting = false;
+						//debugMsg = keyboard.text;
+						//gameManager.GetComponent<GameManager>().ApplyPlayerName(keyboard.text);
+						if(!TextFieldIsOn){
+							textField = Instantiate(textFieldPrefab) as GameObject;
+							TextFieldIsOn = true;
+						}
+						if(textField.GetComponent<TextField>().CheckIsComplete() == true){
+							inputting = false;
+						}
 					}
 				}else if(readyToMain){
 					Application.LoadLevel("Main");
@@ -307,5 +289,9 @@ debugMsg = text;
 		}else{
 			DispText(resultArray[1]);
 		}
+	}
+
+	public string GetText(){
+		return textField.GetComponent<TextField>().GetText();
 	}
 }

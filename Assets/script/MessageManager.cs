@@ -15,6 +15,7 @@ public class MessageManager : MonoBehaviour {
 	public GameObject gameManager;
 	public GameObject imageManger;
 	public GameObject gUIManager;
+	public GameObject GUITextTest;
 
 	// Use this for initialization
 	void Start () {
@@ -53,6 +54,8 @@ public class MessageManager : MonoBehaviour {
 		if( curLineMsg.Contains("<PLAYER>") ){		//replace playerName
 
 			curLineMsg = curLineMsg.Replace("<PLAYER>", gameManager.GetComponent<GameManager>().GetPlayerName());
+			//curLineMsg = curLineMsg.Replace("<PLAYER>", gUIManager.GetComponent<GUIManager>().GetText());
+
 		}
 
 		if(curLineMsg.EndsWith("]")){			//facial change

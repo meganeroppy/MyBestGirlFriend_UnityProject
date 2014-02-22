@@ -277,6 +277,7 @@ MonoBehaviour:
   webCamManager: {fileID: 100000, guid: 14fb2a30c28e2a845b7c8c0fbb1ad7ac, type: 2}
   gameManager: {fileID: 100000, guid: c324b58f925ab8c478fffdd07a812386, type: 2}
   messageManager: {fileID: 100000, guid: 49960af42b1a2d349b6d45202bbbe652, type: 2}
+  textFieldPrefab: {fileID: 100000, guid: 76c7ba7f3b9bff743b00c6ece19d2d62, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

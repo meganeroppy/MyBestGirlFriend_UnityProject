@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{C366EE0A-433E-C505-F4A7-2735F0D654CE}</ProjectGuid>
+	<ProjectGuid>{1240C7C4-99EE-95DF-E993-174299C4DDEF}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -57,6 +57,7 @@
      <Compile Include="Assets\Script\MessageManager.cs" />
      <Compile Include="Assets\Script\Safe.cs" />
      <Compile Include="Assets\Script\WebCamManager.cs" />
+     <Compile Include="Assets\TextField.cs" />
      <None Include="Assets\Resource\Scenario\#scenario2_proto.txt" />
      <None Include="Assets\Resource\Scenario\#scenario1_proto.txt" />
      <None Include="Assets\Resource\Scenario\#end1_proto.txt" />
