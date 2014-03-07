@@ -9,11 +9,6 @@ public class DataKeeper : MonoBehaviour {
 	void Start () {
 	//	playerName = "PLAYER";
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	public static void SetPlayerName(string name){
 		playerName = name;

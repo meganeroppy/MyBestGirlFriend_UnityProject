@@ -20,33 +20,29 @@ public class MessageManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		switch(GameManager.cur_scene){
-		case GameManager.SCENE.SETUP:
-			textLines = setup.text.Split('\n');
-			break;
-		case GameManager.SCENE.MAIN:
-			switch(GameManager.cur_scenario){
-			case GameManager.SCENARIO.SCENARIO1:
-				textLines = scenario1_proto.text.Split('\n');
+			case GameManager.SCENE.SETUP:
+				textLines = setup.text.Split('\n');
 				break;
-			case GameManager.SCENARIO.SCENARIO2:
-				textLines = scenario2_proto.text.Split('\n');
-				break;
-			case GameManager.SCENARIO.END1:
-				textLines = end1_proto.text.Split('\n');
+			case GameManager.SCENE.MAIN:
+				switch(GameManager.cur_scenario){
+					case GameManager.SCENARIO.SCENARIO1:
+						textLines = scenario1_proto.text.Split('\n');
+						break;
+					case GameManager.SCENARIO.SCENARIO2:
+						textLines = scenario2_proto.text.Split('\n');
+						break;
+					case GameManager.SCENARIO.END1:
+						textLines = end1_proto.text.Split('\n');
+						break;
+					default:
+						break;
+				}	//end of switch "SCENARIO"
 				break;
 			default:
 				break;
-			}	//end of switch "SCENARIO"
-			break;
-		default:
-			break;
 		}	//end of switch "SCENE"
 		curLine = 0;
 		curLineMsg = textLines[curLine];
-	}
-	
-	// Update is called once per frame
-	void Update () {
 	}
 
 	public string AnalyzeLine(){
@@ -55,7 +51,6 @@ public class MessageManager : MonoBehaviour {
 
 			curLineMsg = curLineMsg.Replace("<PLAYER>", gameManager.GetComponent<GameManager>().GetPlayerName());
 			//curLineMsg = curLineMsg.Replace("<PLAYER>", gUIManager.GetComponent<GUIManager>().GetText());
-
 		}
 
 		if(curLineMsg.EndsWith("]")){			//facial change
