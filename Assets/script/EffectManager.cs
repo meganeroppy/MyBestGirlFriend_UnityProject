@@ -17,7 +17,7 @@ public class EffectManager : MonoBehaviour {
 //		print(Random.value);
 		switch(request){
 		case "GOOD":
-			Instantiate(effect_good, transform.position, transform.rotation);
+			Instantiate(effect_good, new Vector3(0.0f, 0.0f, 0.0f) , transform.rotation);
 			break;
 		default:
 			break;

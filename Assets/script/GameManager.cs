@@ -32,34 +32,31 @@ public class GameManager : MonoBehaviour {
 	public GameObject webcamManager;
 	//public GameObject dataKeeper;
 	//private GameObject dataKeeperPrefab;
-	public GameObject effectManager;
-	private GameObject effectManagerPrefab;
-	public GameObject imageManager;
-	private GameObject imageManagerPrefab;
-	public GameObject messageManager;
-	private GameObject messageManagerPrefab;
-	public GameObject GUIManager;
-	private GameObject GUIManagerPrefab;
+//	public GameObject effectManager;
+//	private GameObject effectManagerPrefab;
+//	public GameObject imageManager;
+//	private GameObject imageManagerPrefab;
+//	public GameObject messageManager;
+//	private GameObject messageManagerPrefab;
+//	public GameObject GUIManager;
+//	private GameObject GUIManagerPrefab;
+
+	private EffectManager effectManager;
+	private ImageManager imageManager;
+	private MessageManager messageManager;
+	private GUIManager guiManager;
 	
 	void Awake(){
 		cur_OS = AnalyzeOS();
 		w = Screen.width;
 		h = Screen.height;
-		//		margin_side = w * 0.02f;
-		//		margin_updown = h * 0.02f;
 
-		//if(GameObject.FindWithTag("DataKeeper") == null){
-		//	DontDestroyOnLoad(dataKeeper);
-		//	dataKeeperPrefab = Instantiate(dataKeeper) as GameObject;
-		//}
-
-	}
-
-	// Use this for initialization
-	void Start () {
-	
-		GUIManagerPrefab = Instantiate(GUIManager) as GameObject;
-
+		//GUIManagerPrefab = Instantiate(GUIManager) as GameObject;
+		guiManager = GetComponent<GUIManager>();
+		effectManager = GetComponent<EffectManager>();
+		messageManager = GetComponent<MessageManager>();
+		imageManager = GetComponent<ImageManager>();
+		
 		string levelName = Application.loadedLevelName;
 		switch(levelName){
 		case "Title":
@@ -68,35 +65,23 @@ public class GameManager : MonoBehaviour {
 			break;
 		case "Main":
 			cur_scene = SCENE.MAIN;
-			imageManagerPrefab = Instantiate(imageManager) as GameObject;
-			effectManagerPrefab = Instantiate(effectManager) as GameObject;
-			messageManagerPrefab = Instantiate(messageManager) as GameObject;
-			//playerName = dataKeeper.GetComponent<DataKeeper>().GetPlayerName();
+			messageManager.Init();
 			point_total = 0;
 			break;
 		case "Setup":
 			cur_scene = SCENE.SETUP;
-			imageManagerPrefab = Instantiate(imageManager) as GameObject;
-			messageManagerPrefab = Instantiate(messageManager) as GameObject;
+			messageManager.Init();
+
 			break;
 		default:
 			print (levelName);
 			break;
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		Debug.Log(playerName);
-	}
-
-//	void startConversation(){
-//		Application.LoadLevel("Main");
-//	}
 
 	public void addPoint(int point){
 		if(point >= 1){
-			effectManager.GetComponent<EffectManager>().Make("GOOD");
+			effectManager.Make("GOOD");
 
 	//		num += 1;
 		}

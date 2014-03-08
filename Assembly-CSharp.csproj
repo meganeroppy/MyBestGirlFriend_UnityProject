@@ -56,11 +56,13 @@
      <Compile Include="Assets\Script\ImageManager.cs" />
      <Compile Include="Assets\Script\MessageManager.cs" />
      <Compile Include="Assets\Script\Safe.cs" />
+     <Compile Include="Assets\Script\SoundManager.cs" />
      <Compile Include="Assets\Script\WebCamManager.cs" />
      <Compile Include="Assets\TextField.cs" />
      <None Include="Assets\Resource\Scenario\#scenario2_proto.txt" />
      <None Include="Assets\Resource\Scenario\#scenario1_proto.txt" />
      <None Include="Assets\Resource\Scenario\#end1_proto.txt" />
+     <None Include="Assets\Resource\Scenario\#scenario1_2_proto.txt" />
      <None Include="Assets\Resource\Scenario\test.txt" />
      <None Include="Assets\Resource\Scenario\setup_proto.txt" />
   </ItemGroup>

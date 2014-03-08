@@ -1,17 +1,19 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Users\MeganeRoppy\Desktop\GitHub\MyBestGirlFriend_UnityProject\Assets\script\GUIManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resource\Scenario\#scenario1_2_proto.txt">
     <Files>
-      <File FileName="Assets\script\MessageManager.cs" Line="30" Column="11" />
-      <File FileName="Assets\script\DataKeeper.cs" Line="10" Column="15" />
-      <File FileName="c:\Users\MeganeRoppy\Desktop\GitHub\MyBestGirlFriend_UnityProject\Assets\script\GameManager.cs" Line="115" Column="3" />
-      <File FileName="c:\Users\MeganeRoppy\Desktop\GitHub\MyBestGirlFriend_UnityProject\Assets\script\GUIManager.cs" Line="197" Column="8" />
+      <File FileName="Assets\script\MessageManager.cs" Line="32" Column="1" />
+      <File FileName="Assets\script\DataKeeper.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\MeganeRoppy\Desktop\GitHub\MyBestGirlFriend_UnityProject\Assets\script\GameManager.cs" Line="50" Column="1" />
+      <File FileName="c:\Users\MeganeRoppy\Desktop\GitHub\MyBestGirlFriend_UnityProject\Assets\script\GUIManager.cs" Line="1" Column="1" />
       <File FileName="Assets\script\EffectManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resource\Scenario\#scenario1_proto.txt" Line="1" Column="18" />
+      <File FileName="Assets\Resource\Scenario\#scenario1_proto.txt" Line="1" Column="1" />
       <File FileName="Assets\Script\DontDestroy.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\Safe.cs" Line="1" Column="1" />
       <File FileName="Assets\SceneManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Resource\Scenario\setup_proto.txt" Line="1" Column="1" />
+      <File FileName="Assets\Resource\Scenario\#scenario1_2_proto.txt" Line="1" Column="1" />
+      <File FileName="Assets\Script\SoundManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

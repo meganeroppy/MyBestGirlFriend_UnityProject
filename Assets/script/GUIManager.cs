@@ -46,15 +46,20 @@ public class GUIManager : MonoBehaviour {
 	private bool webCamIsWorking = false;
 
 	// gamemanager
-	public GameObject gameManager;
-	public GameObject messageManager;
 	public GameObject textFieldPrefab;
 	private GameObject textField;
 	private bool TextFieldIsOn = false;
 
-	private string debugMsg = "DEFAULT";
+	private GameManager gameManager;
+	private MessageManager messageManager;
+
+
+	//private string debugMsg = "DEFAULT";
 	// Use this for initialization
 	void Start () {
+
+		gameManager = GetComponent<GameManager>();
+		messageManager = GetComponent<MessageManager>();
 
 		w = GameManager.w;
 		h = GameManager.h;
@@ -153,24 +158,30 @@ public class GUIManager : MonoBehaviour {
 			*/////////////////test//////////////////
 
 			if(questioned){	//Answering a question
+				string tmpText;
 				if(GUI.Button(new Rect( 0, h * 0.8f, win_width * 0.5f, win_height * 0.5f), choice[0], skin_Choices)){
-					gameManager.GetComponent<GameManager>().addPoint(point[0]);
-					DispText(reaction[0]);
+					gameManager.addPoint(point[0]);
+
+					tmpText = messageManager.AnalyzeLine(reaction[0]);
+					DispText(tmpText);
+
 					questioned = false;
 				}
 				if(GUI.Button(new Rect( w * 0.5f, h * 0.8f, win_width * 0.5f, win_height * 0.5f), choice[1], skin_Choices)){
-					gameManager.GetComponent<GameManager>().addPoint(point[1]);
-					DispText(reaction[1]);
-					questioned = false;
+					gameManager.addPoint(point[1]);
+					tmpText = messageManager.AnalyzeLine(reaction[1]);
+					DispText(tmpText);					questioned = false;
 				}
 				if(GUI.Button(new Rect( 0, h * 0.9f, win_width * 0.5f, win_height * 0.5f), choice[2], skin_Choices)){
-					gameManager.GetComponent<GameManager>().addPoint(point[2]);
-					DispText(reaction[2]);
+					gameManager.addPoint(point[2]);
+					tmpText = messageManager.AnalyzeLine(reaction[2]);
+					DispText(tmpText);
 					questioned = false;
 				}
 				if(GUI.Button(new Rect( w * 0.5f, h * 0.9f, win_width * 0.5f, win_height * 0.5f), choice[3], skin_Choices)){
-					gameManager.GetComponent<GameManager>().addPoint(point[3]);
-					DispText(reaction[3]);
+					gameManager.addPoint(point[3]);
+					tmpText = messageManager.AnalyzeLine(reaction[3]);
+					DispText(tmpText);
 					questioned = false;
 				}
 			}else{	//Not answering a question
@@ -186,7 +197,7 @@ public class GUIManager : MonoBehaviour {
 		case GameManager.SCENE.SETUP:
 			if(GUI.Button(new Rect( (w * 0.5f) - (win_width * 0.5f), h * 0.8f, win_width, win_height), cur_text, skin_MsgWindow)){
 				if(inputting){
-					string os = gameManager.GetComponent<GameManager>().GetCurOS();
+					string os = gameManager.GetCurOS();
 					if(os == "WINDOWS"){
 						if(!TextFieldIsOn){
 							textField = Instantiate(textFieldPrefab) as GameObject;
@@ -199,7 +210,6 @@ public class GUIManager : MonoBehaviour {
 						//GUI.Box(new Rect(0.0f, 30.0f, w, h ), "keyboard.text : " + keyboard.text, skin_SystemInfo);
 
 						//debugMsg = keyboard.text;
-						//gameManager.GetComponent<GameManager>().ApplyPlayerName(keyboard.text);
 						if(!TextFieldIsOn){
 							textField = Instantiate(textFieldPrefab) as GameObject;
 							TextFieldIsOn = true;
@@ -221,14 +231,15 @@ public class GUIManager : MonoBehaviour {
 		}
 
 		//Sysytem Info
-		GUI.Box(new Rect(0.0f, 0.0f, w, h ), "Running on " + gameManager.GetComponent<GameManager>().GetCurOS(), skin_SystemInfo);
+		GUI.Box(new Rect(0.0f, 0.0f, w, h ), "Running on " + gameManager.GetCurOS(), skin_SystemInfo);
 
 		//Debag Message
-		GUI.Box(new Rect(0.0f, 15.0f, w, h ), "playerName : " + gameManager.GetComponent<GameManager>().GetPlayerName(), skin_SystemInfo);
+		GUI.Box(new Rect(0.0f, 15.0f, w, h ), "playerName : " + gameManager.GetPlayerName(), skin_SystemInfo);
+
 	}
 
 	void DispText(){
-		string tmp_text = messageManager.GetComponent<MessageManager>().AnalyzeLine();
+		string tmp_text = messageManager.AnalyzeLine();
 
 		switch(tmp_text){
 			case "END":
@@ -253,7 +264,8 @@ public class GUIManager : MonoBehaviour {
 	}
 
 	void DispText(string text){
-		string tmp_text = messageManager.GetComponent<MessageManager>().AnalyzeLine(text);
+		string tmp_text = messageManager.AnalyzeLine(text);
+
 		switch(tmp_text){
 		case "END":
 			readyToTitle = true;
@@ -284,7 +296,7 @@ public class GUIManager : MonoBehaviour {
 
 	public void DispResult(string[] resultArray){
 
-		if(gameManager.GetComponent<GameManager>().GetPoint() >=3){
+		if(gameManager.GetPoint() >=3){
 			DispText(resultArray[0]);
 		}else{
 			DispText(resultArray[1]);

@@ -270,11 +270,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: c324b58f925ab8c478fffdd07a812386, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 9.92847157
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c324b58f925ab8c478fffdd07a812386, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.56544113
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c324b58f925ab8c478fffdd07a812386, type: 2}
       propertyPath: m_LocalPosition.z
@@ -503,6 +503,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1987714458}
   - 114: {fileID: 1987714457}
+  - 114: {fileID: 1987714462}
+  - 114: {fileID: 1987714461}
+  - 114: {fileID: 1987714460}
+  - 114: {fileID: 1987714459}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -524,10 +528,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tmp: not editted
   webcamManager: {fileID: 100000, guid: 14fb2a30c28e2a845b7c8c0fbb1ad7ac, type: 2}
-  effectManager: {fileID: 100000, guid: 79616cca910ec0e4884e74b186a05605, type: 2}
-  imageManager: {fileID: 100000, guid: c7ea23b98d3a2b442a4bbc33ea3a5db0, type: 2}
-  messageManager: {fileID: 100000, guid: 49960af42b1a2d349b6d45202bbbe652, type: 2}
-  GUIManager: {fileID: 100000, guid: 8ded05e3ffac23a488964a67d99d3232, type: 2}
 --- !u!4 &1987714458
 Transform:
   m_ObjectHideFlags: 0
@@ -535,7 +535,302 @@ Transform:
   m_PrefabInternal: {fileID: 1039956120}
   m_GameObject: {fileID: 1987714456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.92847157, y: 5.56544113, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1987714459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: c324b58f925ab8c478fffdd07a812386,
+    type: 2}
+  m_PrefabInternal: {fileID: 1039956120}
+  m_GameObject: {fileID: 1987714456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e49aab280563e4199d4401410ab09d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  girl_default: {fileID: 100000, guid: b9fba6492de86f440a0a23527156560c, type: 2}
+  girl_smile: {fileID: 100000, guid: 07e1c16d5d070544d9e0b62b84f394ff, type: 2}
+  girl_angry: {fileID: 100000, guid: bb536ab20bc9eeb44b32ac82728dd906, type: 2}
+--- !u!114 &1987714460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: c324b58f925ab8c478fffdd07a812386,
+    type: 2}
+  m_PrefabInternal: {fileID: 1039956120}
+  m_GameObject: {fileID: 1987714456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350664f91405141488be7d7936a53ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenario1_proto: {fileID: 4900000, guid: 04c3e97a70e30544fb08d3c61f9ac32a, type: 3}
+  scenario2_proto: {fileID: 4900000, guid: a6541083ea8819a43aa8866415e1515c, type: 3}
+  end1_proto: {fileID: 4900000, guid: f4020f37a2568364f90a16ced1a10c3b, type: 3}
+  setup: {fileID: 4900000, guid: ffaed8dfe5c0a1347ab0e1685c0c8b28, type: 3}
+  GUITextTest: {fileID: 100000, guid: 76c7ba7f3b9bff743b00c6ece19d2d62, type: 2}
+--- !u!114 &1987714461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: c324b58f925ab8c478fffdd07a812386,
+    type: 2}
+  m_PrefabInternal: {fileID: 1039956120}
+  m_GameObject: {fileID: 1987714456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5d37b881fc0364187a604e5a62c56e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin_MsgWindow:
+    m_Name: MsgWindow
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 110ecb442c0892f478db5ba0eb7574d8, type: 3}
+      m_TextColor: {r: .977941155, g: .7046929, b: .7046929, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 28
+      m_Right: 28
+      m_Top: 28
+      m_Bottom: 28
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 1
+    m_RichText: 0
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  skin_Choices:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 110ecb442c0892f478db5ba0eb7574d8, type: 3}
+      m_TextColor: {r: .972549021, g: .701960802, b: .701960802, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 14
+      m_Right: 14
+      m_Top: 14
+      m_Bottom: 14
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 15
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 1
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  skin_Title:
+    m_Name: TItle
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 1, g: .385321081, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 1, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 27
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  skin_SystemInfo:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 5
+      m_Right: 5
+      m_Top: 5
+      m_Bottom: 5
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 9
+    m_FontStyle: 0
+    m_Alignment: 2
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  webCamManager: {fileID: 100000, guid: 14fb2a30c28e2a845b7c8c0fbb1ad7ac, type: 2}
+  textFieldPrefab: {fileID: 100000, guid: 76c7ba7f3b9bff743b00c6ece19d2d62, type: 2}
+--- !u!114 &1987714462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: c324b58f925ab8c478fffdd07a812386,
+    type: 2}
+  m_PrefabInternal: {fileID: 1039956120}
+  m_GameObject: {fileID: 1987714456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1362571e353e81345b2ea0731410e3d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect_good: {fileID: 100000, guid: 40eb3c9737577994f8f1f3ba9b434631, type: 2}
